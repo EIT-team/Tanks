@@ -202,7 +202,7 @@ angles1=acosd(cos_a);
 axes=axes./repmat(sum(axes.^2,2).^0.5,1,3);
 radius=hole_diam/2;
 cyl_height='15.00';
-F=fopen('output/Cyllinders_FreeCad_new.FCMacro','w');
+F=fopen('output/Cylinders_FreeCad_new.FCMacro','w');
 
 fprintf(F,['import FreeCAD\n' ...
           'import Part\n' ...
