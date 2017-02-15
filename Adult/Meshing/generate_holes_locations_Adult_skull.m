@@ -1,4 +1,4 @@
-function [electrodes, normals] = generate_holes_1 (Mesh)
+function [electrodes, normals] = generate_holes_locations_Adult_skull (Mesh)
 %% Mesh has to have faces defined! use dubs2d for doing that
 
 %this bit doesnt work kirill:
@@ -21,6 +21,14 @@ origin=mean(cnts);
 % well if you define everything correctly
 srf=srf(cnts(:,1)>=0,:);
 cnts=cnts(cnts(:,1)>=0,:);
+
+ TR=TriRep(srf, vtx(:,1),vtx(:,2),vtx(:,3));
+ figure;
+ h=trimesh(TR);
+ set(h,'EdgeColor','k','FaceColor','none');
+ daspect([1,1,1]);
+ drawnow 
+ hold on
 
 % params
 hole_distance=5;
@@ -72,7 +80,8 @@ electrodes=[electrodes;el_f];
 [el_b, n_back, sel] = make_stripe(first, -2, 1, sel, eps, hole_distance); % stripe of holes along y backward
 electrodes=[electrodes;el_b];
 
-scatter3(electrodes(:,1),electrodes(:,2),electrodes(:,3),'b');daspect([1 1 1]);
+scatter3(electrodes(:,1),electrodes(:,2),electrodes(:,3),'r','filled');
+drawnow
 
 %% now filling the quaters
 
@@ -80,17 +89,23 @@ scatter3(electrodes(:,1),electrodes(:,2),electrodes(:,3),'b');daspect([1 1 1]);
 sel=cnts(cnts(:,2)>y0,:);
 [el,n] = fill_quater (el_f, el_s, sel, first, eps*2.2, hole_distance);
 electrodes=[electrodes;el];
+scatter3(el(:,1),el(:,2),el(:,3),'b','filled');
+ drawnow
 
 % quater 2
 sel=cnts(cnts(:,2)<y0,:);
 [el,n] = fill_quater (el_s, el_b, sel, first, eps*2, hole_distance);
 electrodes=[electrodes;el];
+scatter3(el(:,1),el(:,2),el(:,3),'b','filled');
+ drawnow
 
 % reflect the others as symmetry and cheese
 el_flip=electrodes;
 el_flip(:,1)=-el_flip(:,1);
 el_flip(el_flip(:,1)>=-eps,:)=[];
 electrodes=[electrodes;el_flip];
+scatter3(el(:,1),el(:,2),el(:,3),'b','filled');
+ drawnow
 
 
 %% calculate normals
@@ -213,7 +228,7 @@ angles1=acosd(cos_a);
 axes=axes./repmat(sum(axes.^2,2).^0.5,1,3);
 radius=diams/2;
 cyl_height='20.00';
-F=fopen('Cyllinders_FreeCad_new.FCMacro','w');
+F=fopen('output/Cylinders_FreeCad_new.FCMacro','w');
 
 fprintf(F,['import FreeCAD\n' ...
     'import Part\n' ...
