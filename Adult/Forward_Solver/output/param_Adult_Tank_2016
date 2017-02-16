@@ -1,0 +1,17 @@
+##### Parameters for Adult_Tank_2016 #####
+# no. elements: 4158375 # no. nodes: 712316 #
+
+fem.io.macroGrid: Adult_Tank_2016.dgf
+
+electrode.use_node_assignment: false
+
+electrode.positions: ../data/electrode_positions_Adult_Tank_2016
+electrode.nodes: ../data/electrode_nodes_TA052_metres
+surface.coordinates: ../data/surface_coordinates_TA052_precise
+
+ground.hsquared: 1.5e-5
+groundposition.x: -0.000181415694712206
+groundposition.y: 0.097272534412131281
+groundposition.z: -0.023913479110794767
+
+fem.assign_conductivities: false
