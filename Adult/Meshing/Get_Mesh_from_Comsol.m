@@ -1,19 +1,16 @@
 % This converts the comsol mesh generated from the Solid Model, into the
 % "Mesh" structure for use in EIT software. Requires COMSOL LIVE LINK
 %
-% This is for the complete Adult mesh used in reconstructions
+% This is for the complete Adult mesh for the forward solver
 
-%load the tetrahedral Neonatal head mesh
-model=mphload('AdultTank_for_construction.mph');
-[meshstats,meshdata] = mphmeshstats(model,'mesh1');
+model=mphload('AdultTank_Mesh_4mln.mph');
+[stats,Data]=mphmeshstats(model);
 
-%load the tetrahedra and rearrange into correct format
-Mesh.Faces=(double(meshdata.elem{3})+ones(size(meshdata.elem{3})))';
-Mesh.Nodes=meshdata.vertex';
-Mesh.Tetra=(double(meshdata.elem{2})+ones(size(meshdata.elem{2})))';
-Mesh.Nodes=Mesh.Nodes(:,[1,3,2])*1000;
-% remove any isolated nodes
-[Mesh.Nodes_faces, Mesh.Faces]=removeisolatednode_tri(Mesh.Nodes(:,1:3),Mesh.Faces);
-Mesh.mat_ref=meshdata.elementity{2};
+tri=Data.elem{2};
+tri=double(tri');
+Mesh.Tetra=double(tri)+ones(size(tri,1),size(tri,2));
+Mesh.Nodes=Data.vertex';
+Mesh.mat_ref=double(Data.elementity{2});
+
 %save
-save(['output' filesep 'Mesh_for_construction.mat'],'Mesh','-v7.3');
+save(['output' filesep 'AdultTank_Mesh_4mln.mat'],'Mesh','-v7.3');
