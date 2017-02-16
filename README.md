@@ -2,13 +2,7 @@
 ---
 These head tanks are designed for Electrical Impedance Tomography (EIT) experiments. They are formed of two parts: a head shaped tank, and a skull. This repository contains both an Adult and a neonatal head tank. The geometry is derived from CT/MRI segmentations. The conductivity of the skull is controlled through surface perforations which allow saline to pass through.
 
-## Adult tank
-
-<img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_ad.png" height="300" alt="Adult tank with KHU connected">
-
-## Neonatal tank
-
-<img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_nn.png" height="400" alt="Neonatal tank">
+<img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_ad.png" height="300" alt="Adult tank with KHU connected"> <img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_nn.png" height="400" alt="Neonatal tank">
 
 ### DESIGN FILES REQUIRE GIT LFS - CONTAINS LOADS OF SOLID MODELS ~2GB DOWNLOAD
 Git lfs is *not* required to get printable `.stl` files, only if you want the design files or to edit the electrode positions or the skull conductivities.
