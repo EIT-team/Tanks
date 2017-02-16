@@ -4,12 +4,11 @@ These head tanks are designed for Electrical Impedance Tomography (EIT) experime
 
 ## Adult tank
 
-<img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_ad.png" width="400" alt="Adult tank with KHU connected">
+<img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_ad.png" height="300" alt="Adult tank with KHU connected">
 
 ## Neonatal tank
-The neonatal tank contains fontenelles, a
 
-<img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_nn.png" width="400" alt="Neonatal tank">
+<img src="https://raw.githubusercontent.com/EIT-team/Tanks/master/doc/figures/final_nn.png" height="400" alt="Neonatal tank">
 
 ### DESIGN FILES REQUIRE GIT LFS - CONTAINS LOADS OF SOLID MODELS ~2GB DOWNLOAD
 Git lfs is *not* required to get printable `.stl` files, only if you want the design files or to edit the electrode positions or the skull conductivities.
@@ -22,7 +21,7 @@ To make one of these tanks you will need to:
 - Print the tank
 - Print the skull
 - Remove support material from both models
-- Get electrodes from somewhere - either [stainless steel ones](.doc/electrodes) which we had made (We have spares too!), or Ag/AgCl electrodes for the neonatal tank from [biomed electrodes](http://www.biomedelectrodes.com/product/bmd-8/)
+- Get electrodes from somewhere - either [stainless steel ones](./doc/electrodes) which we had made (We have spares too!), or Ag/AgCl electrodes for the neonatal tank from [biomed electrodes](http://www.biomedelectrodes.com/product/bmd-8/)
 - Insert electrodes in tank (somewhat forcefully) and seal with silicon
 - Wait to dry
 - Insert skull into the tank
@@ -30,7 +29,7 @@ To make one of these tanks you will need to:
 - Collect EIT data
 - Win
 
-The `.stl` files are found [here for the neonate tank ](./Neonate/Construction/printing) and [here for the adult tank ](./Adult/Construction/printing)
+The `.stl` files are found [here for the neonate tank ](./Neonate/Construction/Printing) and [here for the adult tank ](./Adult/Construction/Printing)
 
 ### Using these tanks
 If you are using the `.stl` files provided, without changing the conductivities, geometry or electrode positions, then you can use the Meshes and code to generate the `.dgf` files for use with [here](https://github.com/EIT-team/PEITS). The files for the Adult tank are [here](./Adult/Forward_Solver), and [here](./Neonate/Forward_Solver) for the neonatal tank.
