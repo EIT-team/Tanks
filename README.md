@@ -29,4 +29,9 @@ The `.stl` files are found [here for the neonate tank ](./Neonate/Construction/P
 If you are using the `.stl` files provided, without changing the conductivities, geometry or electrode positions, then you can use the Meshes and code to generate the `.dgf` files for use with [here](https://github.com/EIT-team/PEITS). The files for the Adult tank are [here](./Adult/Forward_Solver), and [here](./Neonate/Forward_Solver) for the neonatal tank.
 
 ### Citing this work
-...
+The accompanying journal article for these tanks is found [here](http://iopscience.iop.org/article/10.1088/1361-6579/aa6586)
+```
+Avery, J. et al., Reproducible 3D printed head tanks for electrical impedance tomography with realistic shape and conductivity distribution. Physiological measurement, 1116.
+
+```
+
