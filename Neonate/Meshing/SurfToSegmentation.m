@@ -4,7 +4,7 @@
 %%
 % resolution of output volumetric image
 vol_res=0.5; % size of voxels in mm
-pixel_scale = 1/vol_res;
+pixel_scale = 1/vol_res; % THIS IS WHAT MUST MATCH IN THE MESHER SETTINGS
 
 
 %% Loading stls
@@ -45,14 +45,6 @@ title('Skull mask')
 figure
 imagesc(scalp.mask(:,:,mask_mid_idx(3)));daspect([1,1,1])
 title('Scalp mask');
-% combine masks
-full_mask = scalp.mask + skull.mask;
-
-figure
-imagesc(full_mask(:,:,mask_mid_idx(3)));daspect([1,1,1])
-title('Combined mask')
-
-drawnow
 
 %% convert positions
 elec_pos=dlmread('NNelecposorig.txt');
@@ -60,7 +52,7 @@ elec_pos=dlmread('NNelecposorig.txt');
 figure
 hold on
 plotmesh(scalp.vertices,scalp.faces)
-plot3(elec_pos(:,1),elec_pos(:,2),elec_pos(:,3),'o');
+plot3(elec_pos(:,1),elec_pos(:,2),elec_pos(:,3),'.','MarkerSize',30);
 hold off
 title('Elecs in original positions');
 
@@ -70,15 +62,48 @@ newy=elec_pos(:,2) -scalp.transform(2,4);
 newz=elec_pos(:,3) -scalp.transform(3,4);
 
 elec_pos_new=[newx newy newz];
+elec_pos_new_sc=elec_pos_new*pixel_scale; % scale the electrode positions
+
+%% Check alignment of mask and electrodes
+
+%these masks are xy flipped, but this is what we want as saving to .inr
+%also flips them or something. 
+
+scalp.mask_sc=scalp.mask;
+skull.mask_sc=skull.mask;
+
+% scalp.mask_sc=permute(scalp.mask,[2,1,3]);
+% skull.mask_sc=permute(skull.mask,[2,1,3]);
+
+% combine masks
+full_mask = scalp.mask_sc + skull.mask_sc;
+
+figure
+imagesc(full_mask(:,:,mask_mid_idx(3)));daspect([1,1,1])
+title('Combined mask')
+
+drawnow
+
+%compare electrode positions
+
+figure
+title('Elecs on new isosurface - check alignment here!');
+hold on
+% isosurface(scalp.mask_sc)
+% isosurface(skull.mask_sc)
+isosurface(full_mask)
+daspect([1,1,1])
+plot3(elec_pos_new_sc(:,2),elec_pos_new_sc(:,1),elec_pos_new_sc(:,3),'.','MarkerSize',30);
+hold off
 
 %% save stuff for mesher
 
-%save the volumetric data
+%save the volumetric data for both skull and no skull cases
 saveinr_EIT(uint8(full_mask),'NNvol.inr',vol_res*[1 1 1]);
-saveinr_EIT(uint8(scalp.mask),'NNvol_homo.inr',vol_res*[1 1 1]);
+saveinr_EIT(uint8(scalp.mask_sc),'NNvol_homo.inr',vol_res*[1 1 1]);
 
-% save the electrode locations
-dlmwrite('NNelecpos.txt',elec_pos_new*pixel_scale);
+% save the electrode locations in the coordinates of the inr
+dlmwrite('NNelecpos.txt',elec_pos_new_sc);
 
 %% RUN MESHER
 
