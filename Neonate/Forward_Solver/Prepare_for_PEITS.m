@@ -85,4 +85,4 @@ writeVTKcell([filepath 'NNFineMesh_Sigma'],Mesh.Tetra,Mesh.Nodes,sigma);
 
 disp('Writing Dune');
 % dune exporter needs meters
-dune_exporter(Mesh.Nodes(:,1:3)/1000,Mesh.Tetra(:,1:4),sigma,filepath,'NN2016_Tank.dgf',pos/1000,gnd_pos/1000,0);
+dune_exporter(Mesh.Nodes(:,1:3)/1000,Mesh.Tetra(:,1:4),sigma,filepath,'NN2016_Tank.dgf',pos/1000,gnd_pos/1000);
