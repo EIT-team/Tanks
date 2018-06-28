@@ -3,7 +3,7 @@
 
 %%
 % resolution of output volumetric image
-vol_res=0.5; % size of voxels in mm
+vol_res=0.25; % size of voxels in mm
 pixel_scale = 1/vol_res; % THIS IS WHAT MUST MATCH IN THE MESHER SETTINGS
 
 
@@ -71,6 +71,42 @@ elec_pos_new_sc=elec_pos_new*pixel_scale; % scale the electrode positions
 
 scalp.mask_sc=scalp.mask;
 skull.mask_sc=skull.mask;
+mk=zeros(size(skull.mask));
+%%
+
+% for layer=340:390
+% imagesc(full_mask(:,:,layer));daspect([1,1,1])
+% title(num2str(layer));
+% pause
+% end
+
+%%
+
+
+load('HolePatchMask.mat');
+%%
+% layer=330;
+% figure; imshow(skull.mask(:,:,layer));daspect([1,1,1])
+% title(num2str(layer));
+% 
+% 
+% 
+% %%
+% 
+% him=imfreehand;
+% him.wait;
+% mk(:,:,layer)=him.createMask;
+
+%%
+skull.mask_sc=skull.mask;
+skull.mask_sc=double(or(skull.mask_sc,mk));
+
+figure;imshow(skull.mask_sc(:,:,layer));daspect([1,1,1])
+
+save('HolePatchMask','mk');
+
+%%
+
 
 % scalp.mask_sc=permute(scalp.mask,[2,1,3]);
 % skull.mask_sc=permute(skull.mask,[2,1,3]);
@@ -79,11 +115,14 @@ skull.mask_sc=skull.mask;
 full_mask = scalp.mask_sc + skull.mask_sc;
 
 figure
+subplot(1,2,1);
 imagesc(full_mask(:,:,mask_mid_idx(3)));daspect([1,1,1])
+subplot(1,2,2);
+imagesc(full_mask(:,:,330));daspect([1,1,1])
 title('Combined mask')
 
 drawnow
-
+%%
 %compare electrode positions
 
 figure

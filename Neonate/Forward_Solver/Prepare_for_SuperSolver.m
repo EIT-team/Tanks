@@ -15,11 +15,11 @@ Prot_NN16=create_protocol(Mesh.elec_pos(1:end-1,:)); %from reconstruction repo
 %find complete prt
 [NN_Prt_full,NN_keep_idx,NN_rem_idx]=ScouseTom_data_findprt(Prot_NN16,32); %from ScouseTom Repo
 
-save('NN2016Prt','NN_keep_idx','NN_Prt_full'); %for ref
-save([savepath 'NN2016Prt'],'NN_keep_idx','NN_Prt_full');
+% save('NN2016Prt','NN_keep_idx','NN_Prt_full'); %for ref
+% save([savepath 'NN2016Prt'],'NN_keep_idx','NN_Prt_full');
 
 %write protocol to textfile for forward solver
-dlmwrite([savepath 'NN2016_Prt_full.txt'],NN_Prt_full);
+% dlmwrite([savepath 'NN2016_Prt_full.txt'],NN_Prt_full);
 
 %% Conductivities
 

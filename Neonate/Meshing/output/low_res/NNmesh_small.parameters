@@ -1,6 +1,6 @@
 # Mesher parameters
-cell_coarse_size_mm: 2
-cell_fine_size_mm: 2
+cell_coarse_size_mm: 1.6
+cell_fine_size_mm: 1.6
 cell_radius_edge_ratio: 3
 cell_size_electrodes_mm: 1
 deform_x: 0
@@ -11,11 +11,11 @@ electrode_radius_mm: 4
 elements_with_fine_sizing_field_percentage: 50
 exude_opt: 1
 facet_angle_deg: 30
-facet_distance_mm: 8
+facet_distance_mm: 4
 ground.hsquared: 1.5e-5
-groundposition.x: 0.0553199
-groundposition.y: 0.104109
-groundposition.z: 0.0261216
+groundposition.x: 0.0575954
+groundposition.y: 0.104134
+groundposition.z: 0.0278524
 height: 1
 lloyd_opt: 1
 max_stretch_distance: 50
@@ -46,7 +46,7 @@ square_refinement: 0
 square_x_extent: 1
 square_y_extent: 1.5
 square_z_extent: 1
-time_limit_sec: 80000
+time_limit_sec: 600
 vx: 0.25
 vy: 0.25
 vz: 0.25
