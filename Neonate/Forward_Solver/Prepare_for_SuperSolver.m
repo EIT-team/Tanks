@@ -6,6 +6,10 @@ savepath=[pwd filesep 'output' filesep];
 disp('Loading Mesh');
 Mesh=loadmesh('../Meshing/output/low_res/NNmesh_small'); %load mesh
 
+%in case there is extra electrode added by the mesher
+Mesh.elec_pos=Mesh.elec_pos(1:33,:);
+
+
 %% Protocol
 
 disp('Finding Protocol');

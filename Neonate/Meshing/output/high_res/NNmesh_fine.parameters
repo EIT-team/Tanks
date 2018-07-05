@@ -1,17 +1,17 @@
 # Mesher parameters
-#cell_coarse_size_mm: 1.6
-#cell_fine_size_mm: 1.6
+#cell_coarse_size_mm: 1
+#cell_fine_size_mm: 0.9
 #cell_radius_edge_ratio: 3
-#cell_size_electrodes_mm: 1
+#cell_size_electrodes_mm: 0.5
 #deform_x: 0
 #deform_y: 0
 #deform_z: 0
 #do_deformation: 0
-#electrode_radius_mm: 4
+#electrode_radius_mm: 5
 #elements_with_fine_sizing_field_percentage: 50
 #exude_opt: 1
 #facet_angle_deg: 30
-#facet_distance_mm: 4
+#facet_distance_mm: 2
 #height: 1
 #lloyd_opt: 1
 #max_stretch_distance: 50
@@ -42,7 +42,7 @@
 #square_x_extent: 1
 #square_y_extent: 1.5
 #square_z_extent: 1
-#time_limit_sec: 600
+#time_limit_sec: 86400
 #vx: 0.25
 #vy: 0.25
 #vz: 0.25
@@ -50,17 +50,15 @@
 #ydim: 423
 #zdim: 427
 
-
 ground.hsquared: 1.5e-5
-groundposition.x: 0.0575954
-groundposition.y: 0.104134
-groundposition.z: 0.0278524
+groundposition.x: 0.0581695
+groundposition.y: 0.104132
+groundposition.z: 0.0279778
 
-
-fem.io.macroGrid: NNmesh_small.dgf
+fem.io.macroGrid: NNmesh_fine.dgf
 
 electrode.use_node_assignment: false
 
-electrode.positions: ../data/NNmesh_small.electrodes
+electrode.positions: ../data/NNmesh_fine.electrodes
 
 fem.assign_conductivities: true
