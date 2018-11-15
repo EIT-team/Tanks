@@ -2,6 +2,8 @@
 % "Mesh" structure for use in EIT software. Requires COMSOL LIVE LINK
 %
 % This is for the complete Neonatal mesh used in reconstructions
+%
+% THIS IS NOW OBSOLETE, USE SurfToSegmentation INSTEAD
 
 %load the tetrahedral Neonatal head mesh
 model=mphload('4p5mln_mesh.mph');
